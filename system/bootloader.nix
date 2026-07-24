@@ -1,8 +1,11 @@
 { config, pkgs, ... }:
 {
-    boot.loader = {
-        grub.enable = true;
-        grub.device = "/dev/nvme0n1";
-        grub.useOSProber = true;
+    boot.loader.grub = {
+        enable = true;
+        efiSupport = true;
+        device = "nodev";
+        useOSProber = true;
     };
+
+    boot.loader.efi.canTouchEfiVariables = true;
 }
