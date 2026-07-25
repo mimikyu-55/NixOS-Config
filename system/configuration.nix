@@ -2,24 +2,20 @@
 
 {
   imports = [ 
-        ./hardware-configuration.nix # Include the results of the hardware scan.
-        ./bootloader.nix
+        ./hardware-configuration.nix 
+        ./bootloader
         ];
 
+    # Networking
     networking.hostName = "nixos"; # Define your hostname.
-
-    # Configure network connections interactively with nmcli or nmtui.
     networking.networkmanager.enable = true;
 
-    # Set your time zone.
+    # TZ and Locale
     time.timeZone = "Europe/London";
-
-    # Select internationalisation properties.
     i18n.defaultLocale = "en_GB.UTF-8";
     i18n.supportedLocales = [
         "en_GB.UTF-8/UTF-8" "en_US.UTF-8/UTF-8"
     ];
-
 
     console = {
         font = null;
