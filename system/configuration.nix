@@ -23,6 +23,11 @@
         keyMap = "uk";
     };
 
+    # Bluetooth
+    hardware.bluetooth = {
+        enable = true;
+    };
+
     services.xserver.enable = true;
     
     programs.hyprland = {
