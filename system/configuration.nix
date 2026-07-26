@@ -31,11 +31,13 @@
         xwayland.enable = true;
     };
 
+    # Steam
     programs.steam = {
         enable = true;
+        gamescopeSession.enable = true;
     };
 
-    programs.gamemode.enable= true;
+    programs.gamemode.enable = true;
 
     environment.shells = with pkgs; [zsh];
     users.defaultUserShell = pkgs.zsh;
