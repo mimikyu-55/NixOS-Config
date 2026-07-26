@@ -2,7 +2,9 @@
 
 {
     imports = [
-        ./sh.nix
+        ./shell/zsh.nix
+        ./shell/bash.nix
+        ./terminal/kitty.nix
         ./programs.nix
     ];
 
