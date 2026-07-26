@@ -39,9 +39,7 @@
 
     programs.gamemode.enable = true;
 
-    environment.shells = with pkgs; [zsh];
-    users.defaultUserShell = pkgs.zsh;
-    programs.zsh.enable = true;
+    environment.shells = [ pkgs.zsh ];
 
 
     # Configure keymap in X11
