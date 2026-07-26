@@ -83,14 +83,7 @@
     pcmanfm
     ];
 
-    nixpkgs.config.allowUnfree = true;
-
-    hardware.nvidia = {
-    modesetting.enable = true;
-    powerManagement.enable = false; # Optional: false by default
-    open = false; # Set to true for Turing/RTX 20-series and newer for open-source kernel modules
-    package = config.boot.kernelPackages.nvidiaPackages.stable; # Update this line
-    };   
+    nixpkgs.config.allowUnfree = true;  
 
     # Some programs need SUID wrappers, can be configured further or are
     # started in user sessions.
