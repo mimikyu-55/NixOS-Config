@@ -5,6 +5,7 @@
         ./hardware-configuration.nix 
         ./bootloader
         ./nvidia
+        ./audio
         ];
 
     # Networking
@@ -66,6 +67,7 @@
     hyprland
     hyprpaper
     pcmanfm
+    pulseaudio
     ];
 
     nixpkgs.config.allowUnfree = true;  
