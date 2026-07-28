@@ -21,7 +21,7 @@
     ];
 
     home.file = {
-
+        "${config.home.homeDirectory}.local/share/Steam/compatibilitytools.d/Proton-GE".source = pkgs.proton-ge-bin.steamcompattool;
     };
 
     # Let Home Manager install and manage itself.
