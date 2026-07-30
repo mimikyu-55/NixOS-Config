@@ -52,6 +52,7 @@
     };
 
     programs.gamemode.enable = true;
+    programs.gamescope.enable = true;
 
     programs.zsh.enable = true;
     environment.shells = [ pkgs.zsh ];
