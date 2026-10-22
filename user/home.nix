@@ -13,8 +13,6 @@
 
     home.stateVersion = "26.05"; # Don't change
 
-    nixpkgs.config.allowUnfree = true;
-
     home.packages = with pkgs; [
         brave
         discord-ptb
