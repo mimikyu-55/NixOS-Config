@@ -9,7 +9,7 @@
 
     settings = {
       user.name = "Oliver";
-      user.email = "oliverbarcock@gmail.com";
+      user.email = "github.visibly545@passmail.com";
 
       init.defaultBranch = "main";
       pull.rebase = true;
