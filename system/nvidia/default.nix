@@ -1,23 +1,28 @@
-{ config, lib, pkgs, ... }:
 {
-    hardware.graphics = {
-        enable = true;
-        enable32Bit = true;
-    };
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+{
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
 
-    services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = [ "nvidia" ];
 
-    hardware.nvidia = {
-        
-        modesetting.enable = true;
+  hardware.nvidia = {
 
-        powerManagement.enable = false;
-        powerManagement.finegrained = false;
+    modesetting.enable = true;
 
-        open = false;
+    powerManagement.enable = false;
+    powerManagement.finegrained = false;
 
-        nvidiaSettings = true;
+    open = false;
 
-        package = config.boot.kernelPackages.nvidiaPackages.production;
-    };
+    nvidiaSettings = true;
+
+    package = config.boot.kernelPackages.nvidiaPackages.production;
+  };
 }

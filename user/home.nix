@@ -1,24 +1,24 @@
 { config, pkgs, ... }:
 
 {
-    imports = [
-        ./shell/zsh.nix
-        ./shell/bash.nix
-        ./terminal/kitty.nix
-        ./programs.nix
-    ];
+  imports = [
+    ./shell/zsh.nix
+    ./shell/bash.nix
+    ./terminal/kitty.nix
+    ./programs.nix
+  ];
 
-    home.username = "ollie";
-    home.homeDirectory = "/home/ollie";
+  home.username = "ollie";
+  home.homeDirectory = "/home/ollie";
 
-    home.stateVersion = "26.05"; # Don't change
+  home.stateVersion = "26.05"; # Don't change
 
-    home.packages = with pkgs; [
-        brave
-        discord-ptb
-        claude-code
-    ];
+  home.packages = with pkgs; [
+    brave
+    discord-ptb
+    claude-code
+  ];
 
-    # Let Home Manager install and manage itself.
-    programs.home-manager.enable = true;
+  # Let Home Manager install and manage itself.
+  programs.home-manager.enable = true;
 }

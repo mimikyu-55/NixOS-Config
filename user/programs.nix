@@ -1,23 +1,23 @@
 { config, pkgs, ... }:
 {
-    programs.vscodium = {
-        enable = true;
-    };
+  programs.vscodium = {
+    enable = true;
+  };
 
-    programs.git = {
-        enable = true;
-    
-        settings = {
-            user.name = "Oliver";
-            user.email = "oliverbarcock@gmail.com";
+  programs.git = {
+    enable = true;
 
-            init.defaultBranch = "main";
-            pull.rebase = true;
-        };
-    };
+    settings = {
+      user.name = "Oliver";
+      user.email = "oliverbarcock@gmail.com";
 
-    programs.waybar = {
-        enable = true;
-        systemd.enable = true;
+      init.defaultBranch = "main";
+      pull.rebase = true;
     };
+  };
+
+  programs.waybar = {
+    enable = true;
+    systemd.enable = true;
+  };
 }
