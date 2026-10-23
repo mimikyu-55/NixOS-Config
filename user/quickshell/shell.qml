@@ -2,6 +2,8 @@ import Quickshell
 import Quickshell.Wayland
 import Quickshell.Hyprland
 import Quickshell.Io
+import Quickshell.Services.SystemTray
+import Quickshell.Widgets
 import QtQuick
 import QtQuick.Layouts
 
@@ -68,7 +70,10 @@ PanelWindow {
 
     RowLayout {
         anchors.fill: parent
-        anchors.margins: 8
+        anchors.leftMargin: 8
+        anchors.rightMargin: 8
+        anchors.topMargin: 4
+        anchors.bottomMargin: 4
 
         Repeater {
             model: 5
@@ -93,6 +98,58 @@ PanelWindow {
 
         Item {
             Layout.fillWidth: true
+        }
+
+        Rectangle {
+            Layout.rightMargin: 8
+            visible: SystemTray.items.values.length > 0
+            implicitWidth: trayRow.implicitWidth + 16
+            implicitHeight: trayRow.implicitHeight + 4
+            color: "transparent"
+            border.color: root.col_muted
+            border.width: 1
+            radius: 6
+
+            Row {
+                id: trayRow
+                anchors.centerIn: parent
+                spacing: 8
+
+                Repeater {
+                    model: SystemTray.items
+
+                    MouseArea {
+                        id: trayItem
+                        required property SystemTrayItem modelData
+
+                        implicitWidth: 18
+                        implicitHeight: 18
+                        acceptedButtons: Qt.LeftButton | Qt.RightButton | Qt.MiddleButton
+
+                        onClicked: event => {
+                            if (event.button === Qt.MiddleButton)
+                                modelData.secondaryActivate();
+                            else if (event.button === Qt.RightButton || modelData.onlyMenu) {
+                                if (modelData.hasMenu)
+                                    menu.open();
+                            } else
+                                modelData.activate();
+                        }
+
+                        IconImage {
+                            anchors.fill: parent
+                            source: trayItem.modelData.icon
+                        }
+
+                        QsMenuAnchor {
+                            id: menu
+                            menu: trayItem.modelData.menu
+                            anchor.item: trayItem
+                            anchor.edges: Edges.Bottom | Edges.Left
+                        }
+                    }
+                }
+            }
         }
 
         Text {
