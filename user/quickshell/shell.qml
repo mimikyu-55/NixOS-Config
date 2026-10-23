@@ -74,9 +74,17 @@ PanelWindow {
     color: root.col_bg
     Text {
         anchors.centerIn: parent
-        text: "My first bar"
+        text: Qt.formatDateTime(clock.date, "HH:mm:ss - ddd d MMM")
         color: root.col_fg
-        font.pixelSize: 14
+        font {
+            family: root.fontFamily
+            pixelSize: root.fontSize
+        }
+    }
+
+    SystemClock {
+        id: clock
+        precision: SystemClock.Seconds
     }
 
     RowLayout {
