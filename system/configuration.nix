@@ -81,6 +81,9 @@
 
     boot.kernelModules = [ "hid-playstation" ];
     boot.kernelPackages = pkgs.linuxPackages_latest;
+    
+    # Disable NVMe APST; DRAM-less Crucial P3 drives can freeze with it
+    boot.kernelParams = [ "nvme_core.default_ps_max_latency_us=0" ];
 
     nixpkgs.config.allowUnfree = true;  
 
