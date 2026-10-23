@@ -16,7 +16,7 @@
   home.stateVersion = "26.05"; # Don't change
 
   home.packages = with pkgs; [
-    brave
+    (callPackage ./packages/brave-origin.nix { })
     discord-ptb
     claude-code
   ];
