@@ -1,0 +1,91 @@
+{
+  "mainBar": {
+    "layer": "top",
+    "position": "top",
+    "height": 38,
+    "margin-top": 10,
+    "margin-left": 20,
+    "margin-right": 20,
+    "spacing": 8,
+
+    "modules-left": ["hyprland/workspaces", "hyprland/window"],
+    "modules-center": ["clock"],
+    "modules-right": ["tray", "pulseaudio", "bluetooth", "network", "cpu", "memory"],
+
+    "hyprland/workspaces": {
+      "format": "{id}",
+      "on-click": "activate",
+      "persistent-workspaces": { "*": 5 }
+    },
+
+    "hyprland/window": {
+      "format": "{title}",
+      "max-length": 50,
+      "separate-outputs": true,
+      "rewrite": { "": "Desktop" }
+    },
+
+    "clock": {
+      "format": "  {:%H:%M}",
+      "format-alt": "  {:%A, %d %B %Y}",
+      "tooltip-format": "<tt>{calendar}</tt>",
+      "calendar": {
+        "mode": "month",
+        "weeks-pos": "left",
+        "format": {
+          "today": "<span color='#00ff99'><b><u>{}</u></b></span>",
+          "weeks": "<span color='#6c7086'>{}</span>"
+        }
+      }
+    },
+
+    "tray": {
+      "icon-size": 18,
+      "spacing": 10
+    },
+
+    "pulseaudio": {
+      "format": "{icon}  {volume}%",
+      "format-muted": "  muted",
+      "format-icons": {
+        "headphone": "",
+        "default": ["", ""]
+      },
+      "scroll-step": 5,
+      "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+      "tooltip-format": "{desc}"
+    },
+
+    "bluetooth": {
+      "format": "",
+      "format-connected": "  {num_connections}",
+      "format-disabled": "",
+      "format-off": "",
+      "tooltip-format": "{controller_alias}\t{controller_address}",
+      "tooltip-format-connected": "{controller_alias}\n\n{device_enumerate}",
+      "tooltip-format-enumerate-connected": "{device_alias}\t{device_battery_percentage}%",
+      "on-click": "blueman-manager"
+    },
+
+    "network": {
+      "format-wifi": "  {signalStrength}%",
+      "format-ethernet": "  {ifname}",
+      "format-disconnected": "  offline",
+      "tooltip-format-wifi": "{essid}\n{ipaddr}  ({frequency} GHz)",
+      "tooltip-format-ethernet": "{ifname}\n{ipaddr}/{cidr}",
+      "on-click": "kitty -e nmtui"
+    },
+
+    "cpu": {
+      "interval": 2,
+      "format": "  {usage}%",
+      "tooltip": false
+    },
+
+    "memory": {
+      "interval": 5,
+      "format": "  {percentage}%",
+      "tooltip-format": "{used:0.1f} GiB / {total:0.1f} GiB"
+    }
+  }
+}

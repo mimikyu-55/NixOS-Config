@@ -1,0 +1,118 @@
+* {
+  font-family: "JetBrainsMono Nerd Font", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+}
+
+window#waybar {
+  background: transparent;
+  color: #cdd6f4;
+}
+
+/* Every module group is a rounded pill, matching Hyprland's rounding of 10 */
+#workspaces,
+#window,
+#clock,
+#tray,
+#pulseaudio,
+#bluetooth,
+#network,
+#cpu,
+#memory {
+  background: rgba(17, 17, 27, 0.85);
+  border-radius: 10px;
+  padding: 0 14px;
+  margin: 0;
+}
+
+/* Workspaces */
+#workspaces {
+  padding: 0 4px;
+}
+
+#workspaces button {
+  color: #7f849c;
+  background: transparent;
+  border-radius: 8px;
+  padding: 0 10px;
+  margin: 4px 2px;
+  transition: all 0.2s ease;
+}
+
+#workspaces button:hover {
+  background: rgba(205, 214, 244, 0.1);
+  color: #cdd6f4;
+}
+
+/* Same cyan to green gradient as the active window border */
+#workspaces button.active {
+  background: linear-gradient(45deg, #33ccff, #00ff99);
+  color: #11111b;
+}
+
+#workspaces button.urgent {
+  background: #f38ba8;
+  color: #11111b;
+}
+
+/* Window title */
+#window {
+  color: #a6adc8;
+  font-weight: 500;
+}
+
+window#waybar.empty #window {
+  background: transparent;
+}
+
+/* Clock */
+#clock {
+  color: #cdd6f4;
+}
+
+/* Right side accents */
+#pulseaudio {
+  color: #33ccff;
+}
+
+#bluetooth {
+  color: #89b4fa;
+}
+
+#bluetooth.off,
+#bluetooth.disabled {
+  color: #6c7086;
+}
+
+#network {
+  color: #00ff99;
+}
+
+#network.disconnected {
+  color: #f38ba8;
+}
+
+#cpu {
+  color: #f9e2af;
+}
+
+#memory {
+  color: #fab387;
+}
+
+#pulseaudio.muted {
+  color: #6c7086;
+}
+
+tooltip {
+  background: rgba(17, 17, 27, 0.95);
+  border: 1px solid rgba(51, 204, 255, 0.5);
+  border-radius: 10px;
+}
+
+tooltip label {
+  color: #cdd6f4;
+}
