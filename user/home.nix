@@ -19,6 +19,7 @@
     (callPackage ./packages/brave-origin.nix { })
     discord-ptb
     claude-code
+    quickshell
   ];
 
   # Let Home Manager install and manage itself.
