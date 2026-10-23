@@ -40,6 +40,9 @@
 
   services.blueman.enable = true;
 
+  # Also enables the default display manager (LightDM), so this is the login screen
+  services.xserver.enable = true;
+
   programs.hyprland = {
     enable = true;
     withUWSM = true;
