@@ -118,6 +118,9 @@ hl.config({
         active_opacity   = 1.0,
         inactive_opacity = 1.0,
 
+        -- Saturation boost, applied to all monitors
+        screen_shader = os.getenv("HOME") .. "/.config/hypr/vibrance.frag",
+
         shadow = {
             enabled      = true,
             range        = 4,
