@@ -14,6 +14,10 @@
       url = "github:sadjow/claude-code-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    millennium = {
+        url = "github:SteamClientHomebrew/Millennium?dir=packages/nix";
+    };
   };
 
   outputs =
@@ -22,6 +26,7 @@
       nixpkgs,
       home-manager,
       claude-code,
+      millennium,
       ...
     }:
     let
@@ -37,7 +42,9 @@
       nixosConfigurations = {
         nixos = lib.nixosSystem {
           inherit system;
-          modules = [ ./system/configuration.nix ];
+          modules = [ ./system/configuration.nix
+                      { nixpkgs.overlays = [millennium.overlays.default ]; } 
+                    ];
         };
       };
       homeConfigurations = {

@@ -52,6 +52,7 @@
   # Steam
   programs.steam = {
     enable = true;
+    package = pkgs.millennium-steam;
     gamescopeSession.enable = true;
     extraCompatPackages = with pkgs; [
       proton-ge-bin
@@ -87,6 +88,7 @@
     pulseaudio
     wireguard-tools
     proton-vpn
+    unzip
   ];
 
   networking.firewall.checkReversePath = false;  # for proton vpn
