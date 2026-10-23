@@ -16,6 +16,7 @@
     home.packages = with pkgs; [
         brave
         discord-ptb
+        claude-code
     ];
 
     # Let Home Manager install and manage itself.

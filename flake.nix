@@ -9,13 +9,19 @@
             url = "github:nix-community/home-manager/release-26.05";
 		    inputs.nixpkgs.follows = "nixpkgs";
         };
+
+        claude-code.url = "github:sadjow/claude-code-nix";
     };
 
-	outputs = { self, nixpkgs, home-manager, ... }:
+	outputs = { self, nixpkgs, home-manager, claude-code, ... }:
 		let
 			lib = nixpkgs.lib;
 			system = "x86_64-linux";
-			pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
+			pkgs = import nixpkgs { 
+                inherit system; 
+                config.allowUnfree = true;
+                overlays = [ claude-code.overlays.default ];
+            };
 		in {
 		nixosConfigurations = {
 			nixos = lib.nixosSystem {
