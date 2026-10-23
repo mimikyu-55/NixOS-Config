@@ -3,6 +3,7 @@
 {
   imports = [
     ./hyprland
+    ./waybar
     ./shell/zsh.nix
     ./shell/bash.nix
     ./terminal/kitty.nix

@@ -1,118 +1,92 @@
 * {
-  font-family: "JetBrainsMono Nerd Font", sans-serif;
-  font-size: 13px;
-  font-weight: 600;
+  font-family: "JetBrainsMono Nerd Font", monospace;
+  font-size: 15px;
+  font-weight: 800;
   border: none;
   border-radius: 0;
+  box-shadow: none;
+  text-shadow: none;
+  background-image: none;
   min-height: 0;
 }
 
 window#waybar {
   background: transparent;
-  color: #cdd6f4;
+  color: #f5f5f5;
 }
 
-/* Every module group is a rounded pill, matching Hyprland's rounding of 10 */
+/* Monochrome pills: near-black fill, 1px grey border, no accent colours */
 #workspaces,
-#window,
+#mpris,
 #clock,
-#tray,
-#pulseaudio,
-#bluetooth,
 #network,
-#cpu,
-#memory {
-  background: rgba(17, 17, 27, 0.85);
+#bluetooth,
+#pulseaudio,
+#custom-power {
+  background-color: #080808;
+  color: #f5f5f5;
+  border: 1px solid #242424;
   border-radius: 10px;
-  padding: 0 14px;
-  margin: 0;
+  margin: 4px 4px;
+  padding: 0 12px;
 }
 
-/* Workspaces */
 #workspaces {
   padding: 0 4px;
 }
 
 #workspaces button {
-  color: #7f849c;
-  background: transparent;
+  background-color: transparent;
+  color: #999999;
   border-radius: 8px;
-  padding: 0 10px;
   margin: 4px 2px;
-  transition: all 0.2s ease;
+  padding: 0 10px;
+}
+
+#workspaces button.active,
+#workspaces button.focused,
+#workspaces button.active:hover,
+#workspaces button.focused:hover {
+  background-color: #f5f5f5;
+  color: #080808;
 }
 
 #workspaces button:hover {
-  background: rgba(205, 214, 244, 0.1);
-  color: #cdd6f4;
+  background-color: #303030;
+  color: #ffffff;
 }
 
-/* Same cyan to green gradient as the active window border */
-#workspaces button.active {
-  background: linear-gradient(45deg, #33ccff, #00ff99);
-  color: #11111b;
-}
-
-#workspaces button.urgent {
-  background: #f38ba8;
-  color: #11111b;
-}
-
-/* Window title */
-#window {
-  color: #a6adc8;
-  font-weight: 500;
-}
-
-window#waybar.empty #window {
-  background: transparent;
-}
-
-/* Clock */
 #clock {
-  color: #cdd6f4;
+  color: #ffffff;
 }
 
-/* Right side accents */
-#pulseaudio {
-  color: #33ccff;
+#network:hover,
+#bluetooth:hover,
+#pulseaudio:hover,
+#mpris:hover,
+#custom-power:hover {
+  background-color: #303030;
+  color: #ffffff;
 }
 
-#bluetooth {
-  color: #89b4fa;
-}
-
+#network.disconnected,
+#pulseaudio.muted,
+#mpris.paused,
 #bluetooth.off,
 #bluetooth.disabled {
-  color: #6c7086;
+  color: #999999;
 }
 
-#network {
-  color: #00ff99;
-}
-
-#network.disconnected {
-  color: #f38ba8;
-}
-
-#cpu {
-  color: #f9e2af;
-}
-
-#memory {
-  color: #fab387;
-}
-
-#pulseaudio.muted {
-  color: #6c7086;
+#bluetooth.connected {
+  color: #ffffff;
 }
 
 tooltip {
-  background: rgba(17, 17, 27, 0.95);
-  border: 1px solid rgba(51, 204, 255, 0.5);
-  border-radius: 10px;
+  background-color: #080808;
+  border: 1px solid #303030;
+  border-radius: 8px;
 }
 
 tooltip label {
-  color: #cdd6f4;
+  color: #f5f5f5;
 }

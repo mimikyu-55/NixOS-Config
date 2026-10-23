@@ -3,89 +3,87 @@
     "layer": "top",
     "position": "top",
     "height": 38,
-    "margin-top": 10,
-    "margin-left": 20,
-    "margin-right": 20,
     "spacing": 8,
+    "margin-top": 8,
+    "margin-left": 12,
+    "margin-right": 12,
 
-    "modules-left": ["hyprland/workspaces", "hyprland/window"],
+    "modules-left": ["hyprland/workspaces", "mpris"],
     "modules-center": ["clock"],
-    "modules-right": ["tray", "pulseaudio", "bluetooth", "network", "cpu", "memory"],
+    "modules-right": ["network", "bluetooth", "pulseaudio", "tray", "custom/power"],
 
     "hyprland/workspaces": {
-      "format": "{id}",
+      "format": "{name}",
       "on-click": "activate",
+      "on-click-middle": "close",
+      "sort-by-number": true,
+      "all-outputs": true,
       "persistent-workspaces": { "*": 5 }
     },
 
-    "hyprland/window": {
-      "format": "{title}",
-      "max-length": 50,
-      "separate-outputs": true,
-      "rewrite": { "": "Desktop" }
+    "mpris": {
+      "format": "{status_icon}  {artist} - {title}",
+      "format-paused": "{status_icon}  {artist} - {title}",
+      "status-icons": { "playing": "", "paused": "" },
+      "max-length": 40,
+      "tooltip-format": "{player}: {album}"
     },
 
     "clock": {
-      "format": "  {:%H:%M}",
-      "format-alt": "  {:%A, %d %B %Y}",
+      "format": "{:%a, %d %b  ·  %H:%M}",
       "tooltip-format": "<tt>{calendar}</tt>",
+      "interval": 30,
       "calendar": {
         "mode": "month",
-        "weeks-pos": "left",
         "format": {
-          "today": "<span color='#00ff99'><b><u>{}</u></b></span>",
-          "weeks": "<span color='#6c7086'>{}</span>"
+          "today": "<span color='#FFFFFF'><b><u>{}</u></b></span>",
+          "weeks": "<span color='#999999'>{}</span>"
         }
       }
     },
 
-    "tray": {
-      "icon-size": 18,
-      "spacing": 10
+    "network": {
+      "format-wifi": "󰤨  {essid}",
+      "format-ethernet": "󰈀  Ethernet",
+      "format-disconnected": "󰤭  Offline",
+      "tooltip-format": "{ifname}\n{ipaddr}",
+      "on-click": "kitty -e nmtui"
+    },
+
+    "bluetooth": {
+      "format": "<span size='x-large' weight='heavy'>󰂯</span>",
+      "format-on": "<span size='x-large' weight='heavy'>󰂯</span>",
+      "format-off": "<span size='x-large' weight='heavy'>󰂲</span>",
+      "format-disabled": "<span size='x-large' weight='heavy'>󰂲</span>",
+      "format-no-controller": "<span size='x-large' weight='heavy'>󰂲</span>",
+      "format-connected": "<span size='x-large' weight='heavy'>󰂱</span> {device_alias}",
+      "format-connected-battery": "<span size='x-large' weight='heavy'>󰂱</span> {device_alias} {device_battery_percentage}%",
+      "tooltip-format": "{controller_alias}\t{controller_address}\n{num_connections} connected",
+      "tooltip-format-connected": "{controller_alias}\t{controller_address}\n{num_connections} connected\n\n{device_enumerate}",
+      "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+      "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+      "max-length": 24,
+      "on-click": "blueman-manager",
+      "on-click-right": "sh -c 'bluetoothctl show | grep -q \"Powered: yes\" && bluetoothctl power off || bluetoothctl power on'"
     },
 
     "pulseaudio": {
       "format": "{icon}  {volume}%",
       "format-muted": "  muted",
-      "format-icons": {
-        "headphone": "",
-        "default": ["", ""]
-      },
+      "format-icons": { "default": ["", "", ""] },
       "scroll-step": 5,
-      "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
-      "tooltip-format": "{desc}"
+      "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
     },
 
-    "bluetooth": {
-      "format": "",
-      "format-connected": "  {num_connections}",
-      "format-disabled": "",
-      "format-off": "",
-      "tooltip-format": "{controller_alias}\t{controller_address}",
-      "tooltip-format-connected": "{controller_alias}\n\n{device_enumerate}",
-      "tooltip-format-enumerate-connected": "{device_alias}\t{device_battery_percentage}%",
-      "on-click": "blueman-manager"
+    "tray": {
+      "icon-size": 16,
+      "spacing": 8
     },
 
-    "network": {
-      "format-wifi": "  {signalStrength}%",
-      "format-ethernet": "  {ifname}",
-      "format-disconnected": "  offline",
-      "tooltip-format-wifi": "{essid}\n{ipaddr}  ({frequency} GHz)",
-      "tooltip-format-ethernet": "{ifname}\n{ipaddr}/{cidr}",
-      "on-click": "kitty -e nmtui"
-    },
-
-    "cpu": {
-      "interval": 2,
-      "format": "  {usage}%",
-      "tooltip": false
-    },
-
-    "memory": {
-      "interval": 5,
-      "format": "  {percentage}%",
-      "tooltip-format": "{used:0.1f} GiB / {total:0.1f} GiB"
+    "custom/power": {
+      "format": "⏻",
+      "tooltip": false,
+      "on-click": "sh -c 'c=$(printf \"Logout\\nReboot\\nShutdown\" | rofi -dmenu -p Power); case \"$c\" in Logout) uwsm stop || hyprctl dispatch \"hl.dsp.exit()\";; Reboot) systemctl reboot;; Shutdown) systemctl poweroff;; esac'"
     }
   }
 }
