@@ -21,6 +21,16 @@ PanelWindow {
     property color col_yellow: "#e0af68"
     property color col_blue: "#7aa2f7"
 
+    // tray icon order, left to right (by item id); unlisted items go last
+    property var trayOrder: ["chrome_status_icon_1", "steam", "proton.vpn.app.gtk"]
+    property var trayItems: SystemTray.items.values.slice().sort((a, b) => {
+        const rank = i => {
+            const n = trayOrder.indexOf(i.id);
+            return n === -1 ? trayOrder.length : n;
+        };
+        return rank(a) - rank(b);
+    })
+
     // font
     property string fontFamily: "JetBrainsMono Nerd Font"
     property int fontSize: 14
@@ -117,7 +127,7 @@ PanelWindow {
                 spacing: 8
 
                 Repeater {
-                    model: SystemTray.items
+                    model: root.trayItems
 
                     MouseArea {
                         id: trayItem
