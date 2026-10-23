@@ -15,4 +15,9 @@
             pull.rebase = true;
         };
     };
+
+    programs.waybar = {
+        enable = true;
+        systemd.enable = true;
+    };
 }
