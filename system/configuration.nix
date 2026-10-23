@@ -89,6 +89,7 @@
     wireguard-tools
     proton-vpn
     unzip
+    fastfetch
   ];
 
   networking.firewall.checkReversePath = false;  # for proton vpn
