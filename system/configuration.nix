@@ -85,7 +85,11 @@
     hyprpaper
     pcmanfm
     pulseaudio
+    wireguard-tools
+    proton-vpn
   ];
+
+  networking.firewall.checkReversePath = false;  # for proton vpn
 
   boot.kernelModules = [ "hid-playstation" ];
   boot.kernelPackages = pkgs.linuxPackages_latest;

@@ -45,7 +45,8 @@ local menu        = "rofi -show drun"
 
 hl.on("hyprland.start", function()
     hl.exec_cmd("hyprpaper")
-end)   
+    hl.exec_cmd("protonvpn-app")
+end)
 
 
 -------------------------------
