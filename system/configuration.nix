@@ -69,6 +69,12 @@
     binfmt = true;
   };
 
+  programs.nix-ld.enable = true;
+    programs.nix-ld.libraries = with pkgs; [
+    xorg.libX11 xorg.libxcb wayland zlib util-linux.lib fontconfig fribidi freetype
+    gtk3 webkitgtk_4_1 libsoup_3 openssl glib cairo pango gdk-pixbuf
+    ];
+
   users.users.ollie = {
     isNormalUser = true;
     extraGroups = [
