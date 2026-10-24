@@ -64,6 +64,11 @@
 
   programs.zsh.enable = true;
 
+  programs.appimage = {
+    enable = true;
+    binfmt = true;
+  };
+
   users.users.ollie = {
     isNormalUser = true;
     extraGroups = [
