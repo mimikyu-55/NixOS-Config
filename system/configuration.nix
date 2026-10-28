@@ -14,7 +14,7 @@
   ];
 
   # "grub" or "lanzaboote" (see ./bootloader)
-  bootloader.type = "grub";
+  bootloader.type = "lanzaboote";
 
   # Networking
   networking.hostName = "nixos"; # Define your hostname.
