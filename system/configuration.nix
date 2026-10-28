@@ -13,6 +13,9 @@
     ./audio
   ];
 
+  # "grub" or "lanzaboote" (see ./bootloader)
+  bootloader.type = "grub";
+
   # Networking
   networking.hostName = "nixos"; # Define your hostname.
   networking.networkmanager.enable = true;
