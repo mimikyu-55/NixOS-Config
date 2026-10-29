@@ -22,7 +22,7 @@ PanelWindow {
     property color col_blue: "#7aa2f7"
 
     // tray icon order, left to right (by item id); unlisted items go last
-    property var trayOrder: ["chrome_status_icon_1", "steam", "proton.vpn.app.gtk"]
+    property var trayOrder: ["chrome_status_icon_1","proton.vpn.app.gtk"]
     property var trayItems: SystemTray.items.values.slice().sort((a, b) => {
         const rank = i => {
             const n = trayOrder.indexOf(i.id);

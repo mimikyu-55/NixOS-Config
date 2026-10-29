@@ -19,10 +19,6 @@
       url = "github:nix-community/lanzaboote/v1.2.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    millennium = {
-        url = "github:SteamClientHomebrew/Millennium?dir=packages/nix";
-    };
   };
 
   outputs =
@@ -31,7 +27,6 @@
       nixpkgs,
       home-manager,
       claude-code,
-      millennium,
       lanzaboote,
       ...
     }:
@@ -50,7 +45,6 @@
           inherit system;
           modules = [ ./system/configuration.nix
                       lanzaboote.nixosModules.lanzaboote
-                      { nixpkgs.overlays = [millennium.overlays.default ]; } 
                     ];
         };
       };

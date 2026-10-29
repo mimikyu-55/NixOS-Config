@@ -52,19 +52,6 @@
     xwayland.enable = true;
   };
 
-  # Steam
-  programs.steam = {
-    enable = true;
-    package = pkgs.millennium-steam;
-    gamescopeSession.enable = true;
-    extraCompatPackages = with pkgs; [
-      proton-ge-bin
-    ];
-  };
-
-  programs.gamemode.enable = true;
-  programs.gamescope.enable = true;
-
   programs.zsh.enable = true;
 
   programs.appimage = {

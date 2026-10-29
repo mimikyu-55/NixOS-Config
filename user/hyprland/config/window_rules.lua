@@ -59,20 +59,6 @@ hl.window_rule({
 -- })
 -- overlayLayerRule:set_enabled(false)
 
--- Deadlock on the left monitor, its StatLocker companion on the right
-hl.window_rule({
-    name  = "deadlock-left-monitor",
-    match = { class = "^steam_app_1422450$" },
-
-    monitor = monitors.left,
-})
-hl.window_rule({
-    name  = "statlocker-right-monitor",
-    match = { class = "^Statlocker-companion$" },
-
-    monitor = monitors.right,
-})
-
 -- Hyprland-run windowrule
 hl.window_rule({
     name  = "move-hyprland-run",
