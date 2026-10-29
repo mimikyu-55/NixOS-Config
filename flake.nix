@@ -19,6 +19,11 @@
       url = "github:nix-community/lanzaboote/v1.2.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    spicetify-nix = {
+        url = "github:Gerg-L/spicetify-nix";
+        inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -28,6 +33,7 @@
       home-manager,
       claude-code,
       lanzaboote,
+      spicetify-nix,
       ...
     }:
     let
@@ -51,7 +57,11 @@
       homeConfigurations = {
         ollie = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          modules = [ ./user/home.nix ];
+          extraSpecialArgs = { inherit spicetify-nix; };
+          modules = [
+            ./user/home.nix
+            spicetify-nix.homeManagerModules.spicetify
+          ];
         };
       };
     };

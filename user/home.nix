@@ -8,6 +8,7 @@
     ./shell/bash.nix
     ./terminal/kitty.nix
     ./programs.nix
+    ./apps/spicetify.nix
   ];
 
   home.username = "ollie";
